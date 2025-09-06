@@ -82,14 +82,14 @@ uvicorn main:app --reload
 ### Build the Docker Image
 
 ```
-docker build -t diabetes-prediction-model .
+docker build -t diabetes-model-api .
 ```
 
 ### Run the Container
 
 ```
-docker run -p 8000:8000 diabetes-prediction-model
-```
+docker run  -p 8001:8000 diabetes-model-api 
+``` # or any port 
 
 ## Deploy to Kubernetes
 

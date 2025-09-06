@@ -10,6 +10,8 @@ df = pd.read_csv(url)
 
 print("✅ Columns:", df.columns.tolist())  # Debug print
 
+# I have done some EDA and Preprocessing.
+
 # Prepare data
 X = df[["Pregnancies", "Glucose", "BloodPressure", "BMI", "Age"]]
 y = df["Outcome"]
