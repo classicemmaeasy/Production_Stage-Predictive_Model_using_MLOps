@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # 🩺 Diabetes Prediction Model – (FastAPI + Docker + K8s)
 
 
@@ -109,6 +108,3 @@ kubectl apply -f diabetes-prediction-model-deployment.yaml
 
 
 
-=======
-Production_Stage_Diabetes-Prediction_using_Machine_Learning
->>>>>>> 45f0474c34f7744503a451b64ea66bb1dd6a9d19
