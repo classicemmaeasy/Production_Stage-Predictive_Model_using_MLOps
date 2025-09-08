@@ -12,9 +12,18 @@ The pipeline workflow are :
 
 - ✅ Model Training
 - ✅ Building the Model 
-- ✅ API Deployment with FastAPI (to enable multiple users concurently).
-- ✅ Dockerization
+- ✅ API Deployment with FastAPI (to enable     multiple users concurently).
+- ✅ Dockerization (packaging it into docker which takes my ML model with FastAPI + dependencies → packages them into a container image.)
+
 - ✅ Kubernetes Deployment
+
+   Kubernetes solves orchestration + scaling
+   Run multiple replicas of the model API.
+   Autoscale based on requests per second.
+   Ensure uptime (self-healing).
+   Roll out new versions of the model without downtime.
+
+
 
 ---
 
