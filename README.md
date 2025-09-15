@@ -93,7 +93,7 @@ uvicorn main:app --reload
 ```
 docker build -t diabetes-model-api .
 ```
-
+ 
 ### Run the Container
 
 ```
