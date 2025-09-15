@@ -12,7 +12,7 @@ The pipeline workflow are :
 
 - ✅ Model Training
 - ✅ Building the Model 
-- ✅ API Deployment with FastAPI (to enable     multiple users concurently).
+- ✅ API Deployment with FastAPI and a webpage for users to interact with the model. ( FastAPI enables multiple users concurently).
 - ✅ Dockerization (packaging it into docker which takes my ML model with FastAPI + dependencies → packages them into a container image.)
 
 - ✅ Kubernetes Deployment
@@ -23,7 +23,8 @@ The pipeline workflow are :
    Ensure uptime (self-healing).
    Roll out new versions of the model without downtime.
 
-
+- ✅ CICD using github action
+ it triggers an action anytime the code or the data changes, and automate the entire workflow in production
 
 ---
 
@@ -74,7 +75,7 @@ python train.py
 uvicorn main:app --reload
 ```
 
-### Sample Input for /predict
+### Sample Input for /predict json format
 
 ```
 {
