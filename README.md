@@ -1,4 +1,4 @@
-# 🩺 Diabetes Prediction Model – (FastAPI + Docker + K8s)
+# 🩺 Diabetes Prediction Model – (FastAPI + Docker + K8s + Github Actions + AlgoCD)
 
 
 
@@ -26,6 +26,7 @@ The pipeline workflow are :
 - ✅ CICD using github action
  it triggers an action anytime the code or the data changes, and automate the entire workflow in production
 
+- ✅ Gitops using ArgoCD for deployment sync with github
 ---
 
 ## 📊 Problem Statement
@@ -99,13 +100,14 @@ docker build -t diabetes-model-api .
 
 ```
 docker run  -p 8001:8000 diabetes-model-api 
-``` # or any port 
+# or any port 
 
 ## Deploy to Kubernetes
 
-```
 kubectl apply -f diabetes-prediction-model-deployment.yaml
 ```
+
+
 
 
 

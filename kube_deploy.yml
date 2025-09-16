@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: diabetes-api
-        image: Emmanuel/diabetes-model-api:v1
+        image: emmaeasy/diabetes-model-api:v1
         ports:
         - containerPort: 8000
         imagePullPolicy: Always
