@@ -20,7 +20,8 @@ jobs:
       run: echo "${{ secrets.Docker_Tocken }}" | docker login -u "emmaeasy" --password-stdin
 
     - name: Build Docker image
-      run: docker build -t docker build -t diabetes-model-api .
+      run: docker build -t emmaeasy/diabetes-model-api:latest .
 
     - name: Push Docker image to Docker Hub
-      run: docker push emmaeasy/diabetes-model-api
+      run: docker push emmaeasy/diabetes-model-api:latest
+
