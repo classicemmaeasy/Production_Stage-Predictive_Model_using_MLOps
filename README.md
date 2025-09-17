@@ -95,29 +95,35 @@ uvicorn main:app --reload
 ```
 docker build -t diabetes-model-api .
 ```
+
+### Docker Desktop
+![alt text](pix/diabetes-1.JPG)
  
 ### Run the Container
 
 ```
 docker run  -p 8001:8000 diabetes-model-api 
-# or any port 
+```
+![alt text](<pix/docker.JPG>)
+##### or any port 
 
 ## Deploy to Kubernetes
 
-kubectl apply -f diabetes-prediction-model-deployment.yaml
+kubectl apply -f kube_deploy.yaml
+![alt text](pix/kubenetes1.JPG)
 ```
 
-
-# Setting Up ArgoCD to sync with github
-
-
+```
+## Setting Up ArgoCD to sync with github
+![alt text](pix/image.png)
+```
+```
  Make sure your repo contains the manifest(s) Argo CD should apply. For example either:
 
 * `kube_deploy.yml` at the repo root, or
 * a `kubernetes/` folder containing the manifests.
 
  Also, make sure you have your main..yml or ci.yaml in your .github/workflow folder
----
 
 ## Step 1 — Install Argo CD in your cluster
 
@@ -249,6 +255,8 @@ argocd app create prod-diabops --repo https://github.com/your-user/your-repo.git
 ```powershell
 argocd app sync prod-diabops
 ```
+### Argo kubernetes pod synced with Github
+![alt text](pix/argosync.JPG)
 
 Then verify status:
 
@@ -257,94 +265,5 @@ argocd app get prod-diabops
 kubectl get pods -n default
 kubectl get svc -n default
 ```
-
----
-
-## Optional: Enable automated sync (auto-deploy from Git)
-
-If you want Argo CD to auto-apply changes when the Git repo updates:
-
-```powershell
-argocd app set prod-diabops --sync-policy automated --auto-prune --self-heal
-```
-
-This enables automatic sync + pruning + self-heal.
-
----
-
-## Troubleshooting & common fixes
-
-* **"rpc error: application spec ... app path does not exist"**
-
-  * Check `--path` value. Ensure that the folder or file exists at the branch you specified.
-
-* **`permission denied` from `argocd` CLI**
-
-  * Make sure you logged in (`argocd login ...`) and port-forward is running.
-
-* **`ImagePullBackOff` or `ErrImagePull`**
-
-  * Confirm the `image:` value in your Deployment matches an image that exists on the registry (exact spelling + lowercase).
-  * If the image is private, create a `docker-registry` secret and add `imagePullSecrets` to the pod spec.
-
-* **Port already in use when port-forwarding**
-
-  * Check who is using the port: `netstat -ano | findstr :8080` and kill the PID or use another port.
-
-* **Argo CD pods not running**
-
-  * `kubectl describe pod <pod-name> -n argocd` and `kubectl logs <pod-name> -n argocd` for details.
-
----
-
-## Useful commands (summary)
-
-```powershell
-# Install Argo CD
-kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
-
-# Watch Argo CD pods
-kubectl get pods -n argocd -w
-
-# Port-forward (keep in separate terminal)
-kubectl port-forward svc/argocd-server -n argocd 8080:443
-
-# Decode admin password (PowerShell)
-$secret = kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}"
-[System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($secret))
-
-# Login (CLI)
-argocd login localhost:8080 --username admin --password <PASSWORD> --insecure
-
-# Create app (PowerShell backtick or single-line)
-argocd app create prod-diabops --repo https://github.com/classicemmaeasy/Production_Stage_Diabetes-Prediction_using_Machine_Learning.git --path . --dest-server https://kubernetes.default.svc --dest-namespace default --revision main
-
-# Sync app
-argocd app sync prod-diabops
-
-# Check app status
-argocd app get prod-diabops
-
-# Enable automatic sync
-argocd app set prod-diabops --sync-policy automated --auto-prune --self-heal
-
-# Debug pods
-kubectl get pods -n default
-kubectl describe pod <pod-name> -n default
-kubectl logs <pod-name> -c <container-name> -n default
-```
-
----
-
-## Final notes
-
-* Keep your manifests versioned in Git — Argo CD works best when Git is the source of truth.
-* If you want CI to build images automatically, add a GitHub Actions workflow that builds + pushes the Docker image; Argo CD will pull the image referenced in your manifests.
-* For production setups consider adding TLS, RBAC, and using a real registry with proper access controls.
-
----
-
-*That's it — follow the steps in order, and Argo CD will be synced to your GitHub repo. I left placeholders for you to paste screenshot/images.*
-
 
 
