@@ -1,6 +1,5 @@
 End to End Machine Learning project using a real-world chronic disease use case: predicting whether a person is diabetic based on health metrics. 
 
- diabetes is a chronic disease, not an illness or temporary condition, characterized by persistently high blood glucose (sugar) levels. It occurs when the body produces insufficient insulin or is unable to effectively use the insulin it produces. Over time, this elevated blood sugar can lead to serious damage to many organs, including the eyes, kidneys, heart, and nerves.
 
  I built an End to End Supervised Machine Learning pipelines that allow users or Medical Professionals  to input different features that could potentially cause diabetes and see the result real-time.
 (FastAPI + Docker + K8s + Github Actions + AlgoCD)
