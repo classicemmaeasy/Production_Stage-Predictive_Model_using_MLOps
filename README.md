@@ -1,4 +1,7 @@
-End to End Machine Learning project using a real-world chronic disease use case: predicting whether a person is diabetic based on health metrics. <img width="295" height="171" alt="image" src="https://github.com/user-attachments/assets/22d4446d-c77a-4a15-a32e-2b57eccdd281" />
+End to End Machine Learning project using a real-world chronic disease use case: predicting whether a person is diabetic based on health metrics. 
+
+<img width="295" height="171" alt="image" src="https://github.com/user-attachments/assets/22d4446d-c77a-4a15-a32e-2b57eccdd281" />
+
  I built an End to End Supervised Machine Learning pipelines that allow users or Medical Professionals  to input different features that could potentially cause diabetes and see the result real-time.
 (FastAPI + Docker + K8s + Github Actions + AlgoCD)
 
