@@ -7,8 +7,7 @@ End to End Machine Learning project using a real-world chronic disease use case:
 
 The pipeline workflow are :
 
-- ✅ Model Training
-- ✅ Building the Model 
+- ✅ Building and Training the Model using Random Forest Classifier ensemble method
 - ✅ API Deployment with FastAPI and a webpage for users to interact with the model. ( FastAPI enables multiple users concurently).
 - ✅ Dockerization (packaging it into docker which takes my ML model with FastAPI + dependencies → packages them into a container image.)
 
